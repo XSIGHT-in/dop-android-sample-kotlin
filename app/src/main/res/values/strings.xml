@@ -6,4 +6,5 @@
     <string name="log_out">Log Out</string>
     <string name="description_of_collection_for_paris">Collection for Paris</string>
     <string name="description_of_collection_for_hcmc">Collection for HCMC</string>
+    <string name="collections">Collections</string>
 </resources>
