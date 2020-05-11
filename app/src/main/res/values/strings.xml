@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Kotlin Sample</string>
+    <string name="e_mail">E-mail Address</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="log_out">Log Out</string>
+    <string name="description_of_collection_for_paris">Collection for Paris</string>
+    <string name="description_of_collection_for_hcmc">Collection for HCMC</string>
+</resources>
