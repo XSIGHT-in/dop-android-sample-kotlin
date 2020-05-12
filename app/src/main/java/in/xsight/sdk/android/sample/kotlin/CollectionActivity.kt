@@ -16,6 +16,7 @@ class CollectionActivity : AppCompatActivity(), View.OnClickListener  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_collection)
 
+        // Retrieve dummy data from MainActivity
         val bundle: Bundle? = intent.getBundleExtra(BUNDLE_KEY)
         cityInfo = bundle?.getParcelable<City>(PARCEL_KEY_CITY)
 
@@ -164,7 +165,7 @@ class CollectionActivity : AppCompatActivity(), View.OnClickListener  {
                     facilities = "Napkins | Bottled water | Towels | Toothpaste | Soap | Elevator | Hair dryer | Internet",
                     specialFacilities = "",  // If you don't have any, send it as empty string NOT nil
                     bookingType = "Instant booking",
-                    cancelPolicy = "Strict",    
+                    cancelPolicy = "Strict",
                     discountId = 11245899,
                     discountName = "COVID-19",
                     discountPercent = 43.0,
