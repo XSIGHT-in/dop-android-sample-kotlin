@@ -4,7 +4,13 @@
     <string name="password">Password</string>
     <string name="log_in">Log In</string>
     <string name="log_out">Log Out</string>
-    <string name="description_of_collection_for_paris">Collection for Paris</string>
-    <string name="description_of_collection_for_hcmc">Collection for HCMC</string>
+    <string name="description_of_image">Image</string>
     <string name="collections">Collections</string>
+    <string name="products_in_collection">Products in Collection</string>
+    <string name="date_format">YYYY-MM-DD</string>
+    <string name="select_check_in_date">Select Check-In Date</string>
+    <string name="select_check_out_date">Select Check-Out Date</string>
+    <string name="request_to_book">Request To Book</string>
+    <string name="purchase">Purchase</string>
+    <string name="back_to_main">Back To Main</string>
 </resources>
