@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".purchaseCompleteActivity"></activity>
-        <activity android:name=".RequestToBookActivity" />
-        <activity android:name=".ProductActivity" />
+        <activity android:name=".PurchaseCompleteActivity"></activity>
+        <activity
+            android:name=".RequestToBookActivity"
+            android:parentActivityName=".ProductActivity"/>
+        <activity
+            android:name=".ProductActivity"
+            android:parentActivityName=".CollectionActivity" />
         <activity
             android:name=".CollectionActivity"
             android:parentActivityName=".MainActivity" />
