@@ -7,6 +7,7 @@ import `in`.xsight.sdk.android.sample.kotlin.dummy.RequestToBook
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import com.gruter.sdk.open.api.DOX
 import com.gruter.sdk.open.model.XEvent
@@ -57,8 +58,9 @@ class RequestToBookActivity : AppCompatActivity() {
         /******************************
          * XSIGHT.in SDK
          */
-        if (cityInfo == null || productInfo == null || reqToBookInfo == null) return
-
+        if (cityInfo == null || productInfo == null || reqToBookInfo == null)
+            return
+        Log.d("XSIGHT.in", "Start for Click_Request_to_Book logEvent()")
         DOX.setEventGroupName("Click_Request_to_Book")
         DOX.logEvent(
             XEvent.Builder()

@@ -7,6 +7,7 @@ import `in`.xsight.sdk.android.sample.kotlin.dummy.RequestToBook
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.gruter.sdk.open.api.DOX
 import com.gruter.sdk.open.model.XEvent
 import com.gruter.sdk.open.model.XProperties
@@ -51,7 +52,7 @@ class PurchaseCompleteActivity : AppCompatActivity() {
          */
         if (cityInfo == null || productInfo == null || reqToBookInfo == null || purchaseInfo == null)
             return
-
+        Log.d("XSIGHT.in", "Start for Check_Out logEvent()")
         DOX.setEventGroupName("Check_Out")
         DOX.logRevenue(
             XRevenue.Builder()

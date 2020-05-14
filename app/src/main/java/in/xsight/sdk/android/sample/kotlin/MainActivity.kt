@@ -72,42 +72,41 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     /******************************
                      * XSIGHT.in SDK
                      */
-//                    GlobalScope.launch {
-                        DOX.setUserId("XS19H71n123")
-                        Log.d("XSIGHT.in", "Start for Sign_In logEvent()")
-                        DOX.logEvent(
-                            XEvent.Builder()
-                                .setEventName("Sign_In")
-                                .setProperties(
-                                    XProperties.Builder()
-                                        .set("xi_email", "test@mail.com")
-                                        .set("xi_gender", "F")
-                                        .set("xi_timezone", "84")
-                                        .set("xi_email", "test@mail.com")
-                                        .set("xi_fb_id", "test@mail.com")
-                                        .set("xi_google_id", "test@mail.com")
-                                        .set("xi_status", "Active")
-                                        .set("xi_is_host", "Guest")
-                                        .build()
-                                )
-                                .build()
-                        )
-                        Log.d("XSIGHT.in", "Start for Sign_In userIdentify()")
-                        DOX.userIdentify(
-                            XIdentify.Builder()
-                                .setOnce("user_id", "XS19H71n123")
-                                .set("xi_email", "test@mail.com")
-                                .set("xi_gender", "F")
-                                .set("xi_timezone", "84")
-                                .set("xi_email", "test@mail.com")
-                                .set("xi_fb_id", "test@mail.com")
-                                .set("xi_google_id", "test@mail.com")
-                                .set("xi_status", "Active")
-                                .set("xi_is_host", "Guest")
-                                .build()
-                        )
-
-//                    }
+                    DOX.setUserId("XS19H71n123")
+                    Log.d("XSIGHT.in", "Start for Sign_In logEvent()")
+                    DOX.setEventGroupName("Sign_In")
+                    DOX.logEvent(
+                        XEvent.Builder()
+                            .setEventName("Sign_In")
+                            .setProperties(
+                                XProperties.Builder()
+                                    .set("xi_email", "test@mail.com")
+                                    .set("xi_gender", "F")
+                                    .set("xi_timezone", "84")
+                                    .set("xi_email", "test@mail.com")
+                                    .set("xi_fb_id", "test@mail.com")
+                                    .set("xi_google_id", "test@mail.com")
+                                    .set("xi_status", "Active")
+                                    .set("xi_is_host", "Guest")
+                                    .build()
+                            )
+                            .build()
+                    )
+                    Log.d("XSIGHT.in", "Start for Sign_In userIdentify()")
+                    DOX.setEventGroupName("Sign_In")
+                    DOX.userIdentify(
+                        XIdentify.Builder()
+                            .setOnce("user_id", "XS19H71n123")
+                            .set("xi_email", "test@mail.com")
+                            .set("xi_gender", "F")
+                            .set("xi_timezone", "84")
+                            .set("xi_email", "test@mail.com")
+                            .set("xi_fb_id", "test@mail.com")
+                            .set("xi_google_id", "test@mail.com")
+                            .set("xi_status", "Active")
+                            .set("xi_is_host", "Guest")
+                            .build()
+                    )
                     /******************************/
                 }
             }
@@ -123,6 +122,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                      */
                     DOX.setUserId("")
                     Log.d("XSIGHT.in", "Start for Sign_Out logEvent()")
+                    DOX.setEventGroupName("Sign_Out")
                     DOX.logEvent(
                         XEvent.Builder()
                             .setEventName("Sign_Out")
@@ -180,7 +180,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         return pref.getString(PREFERENCE_KEY_USER_ID, null)
     }
 
-    private fun displayLoginComponent(loggedIn:Boolean) {
+    private fun displayLoginComponent(loggedIn: Boolean) {
         signInButton.isEnabled = !loggedIn
         signOutButton.isEnabled = loggedIn
         emailEditText.isEnabled = !loggedIn

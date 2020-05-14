@@ -9,6 +9,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.gruter.sdk.open.api.DOX
@@ -56,7 +57,7 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
          * XSIGHT.in SDK
          */
         if (cityInfo == null || productInfo == null) return
-
+        Log.d("XSIGHT.in", "Start for View_PDP logEvent()")
         DOX.setEventGroupName("View_PDP")
         DOX.logEvent(
             XEvent.Builder()

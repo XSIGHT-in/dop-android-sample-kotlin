@@ -5,6 +5,7 @@ import `in`.xsight.sdk.android.sample.kotlin.dummy.Product
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.gruter.sdk.open.api.DOX
 import com.gruter.sdk.open.model.XEvent
@@ -36,6 +37,8 @@ class CollectionActivity : AppCompatActivity(), View.OnClickListener  {
         /******************************
          * XSIGHT.in SDK
          */
+        if (cityInfo == null) return
+        Log.d("XSIGHT.in", "Start for View_Collection logEvent()")
         DOX.setEventGroupName("View_Collection")
         DOX.logEvent(
             XEvent.Builder()

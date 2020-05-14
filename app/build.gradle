@@ -50,8 +50,7 @@ dependencies {
 
     // ADD for XSIGHTin SDK
     // ###################################################
-    implementation project(':dop-android-base-sdk')
-    implementation project(':dop-android-sdk')
+    implementation project(':dop-android-sdk-2.0.2')
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0+'
     implementation 'androidx.annotation:annotation:1.1.0'
