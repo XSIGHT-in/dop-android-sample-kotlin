@@ -4,9 +4,16 @@ import `in`.xsight.sdk.android.sample.kotlin.dummy.City
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.preference.PreferenceManager
 import android.view.View
+import com.gruter.sdk.open.api.DOX
+import com.gruter.sdk.open.model.XEvent
+import com.gruter.sdk.open.model.XIdentify
+import com.gruter.sdk.open.model.XProperties
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -16,15 +23,42 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /******************************
+         * XSIGHT.in SDK
+         */
+        DOX.initialization(this)
+        /******************************/
+
         // Check having logged in
-        val lenUserId = loadUserId()?.length ?: 0
-        isLoggedIn = (lenUserId > 0)
+        val userId = loadUserId() ?: ""
+        isLoggedIn = userId.isNotEmpty()
         displayLoginComponent(isLoggedIn)
+        DOX.setUserId(userId)
 
         signInButton.setOnClickListener(this)
         signOutButton.setOnClickListener(this)
         collectionImageView1.setOnClickListener(this)
         collectionImageView2.setOnClickListener(this)
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        /******************************
+         * XSIGHT.in SDK
+         */
+        DOX.setEventGroupName("Visit_Main_Page")
+        DOX.logEvent(
+            XEvent.Builder()
+                .setEventName("Visit_Main_Page")
+                .setProperties(
+                    XProperties.Builder()
+                        .set("xi_is_host", "Guest")
+                        .build()
+                )
+                .build()
+        )
+        /******************************/
     }
 
     override fun onClick(v: View) {
@@ -35,6 +69,46 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     isLoggedIn = true
                     displayLoginComponent(isLoggedIn)
                     saveUserId("XS19H71n123")
+                    /******************************
+                     * XSIGHT.in SDK
+                     */
+//                    GlobalScope.launch {
+                        DOX.setUserId("XS19H71n123")
+                        Log.d("XSIGHT.in", "Start for Sign_In logEvent()")
+                        DOX.logEvent(
+                            XEvent.Builder()
+                                .setEventName("Sign_In")
+                                .setProperties(
+                                    XProperties.Builder()
+                                        .set("xi_email", "test@mail.com")
+                                        .set("xi_gender", "F")
+                                        .set("xi_timezone", "84")
+                                        .set("xi_email", "test@mail.com")
+                                        .set("xi_fb_id", "test@mail.com")
+                                        .set("xi_google_id", "test@mail.com")
+                                        .set("xi_status", "Active")
+                                        .set("xi_is_host", "Guest")
+                                        .build()
+                                )
+                                .build()
+                        )
+                        Log.d("XSIGHT.in", "Start for Sign_In userIdentify()")
+                        DOX.userIdentify(
+                            XIdentify.Builder()
+                                .setOnce("user_id", "XS19H71n123")
+                                .set("xi_email", "test@mail.com")
+                                .set("xi_gender", "F")
+                                .set("xi_timezone", "84")
+                                .set("xi_email", "test@mail.com")
+                                .set("xi_fb_id", "test@mail.com")
+                                .set("xi_google_id", "test@mail.com")
+                                .set("xi_status", "Active")
+                                .set("xi_is_host", "Guest")
+                                .build()
+                        )
+
+//                    }
+                    /******************************/
                 }
             }
             // OnClick Log-Out
@@ -43,6 +117,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     isLoggedIn = false
                     displayLoginComponent(isLoggedIn)
                     saveUserId("")
+
+                    /******************************
+                     * XSIGHT.in SDK
+                     */
+                    DOX.setUserId("")
+                    Log.d("XSIGHT.in", "Start for Sign_Out logEvent()")
+                    DOX.logEvent(
+                        XEvent.Builder()
+                            .setEventName("Sign_Out")
+                            .setProperties(
+                                XProperties.Builder()
+                                    .set("xi_is_host", "Guest")
+                                    .build()
+                            )
+                            .build()
+                    )
+                    /******************************/
                 }
             }
             R.id.collectionImageView1 -> {

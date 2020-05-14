@@ -27,3 +27,8 @@ fun convertStringToDate(s: String): Date {
     val df: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
     return df.parse(s)
 }
+
+fun getUnixTimestamp(date: Date?): Long {
+    // It's equal to Date().getTime() / 1000L in Java
+    return date?.time?.div(1000L) ?: 0
+}

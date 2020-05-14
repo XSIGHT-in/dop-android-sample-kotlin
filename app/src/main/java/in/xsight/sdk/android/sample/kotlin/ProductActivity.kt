@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import com.gruter.sdk.open.api.DOX
+import com.gruter.sdk.open.model.XEvent
+import com.gruter.sdk.open.model.XProperties
 import kotlinx.android.synthetic.main.activity_product.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -46,6 +49,52 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
         requestToBookButton.setOnClickListener(this)
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        /******************************
+         * XSIGHT.in SDK
+         */
+        if (cityInfo == null || productInfo == null) return
+
+        DOX.setEventGroupName("View_PDP")
+        DOX.logEvent(
+            XEvent.Builder()
+                .setEventName("View_PDP")
+                .setProperties(
+                    XProperties.Builder()
+                        .set("xi_is_host", "Guest")
+                        .set("xi_room_id", productInfo?.roomId)
+                        .set("xi_name", productInfo?.name)
+                        .set("xi_search_id", productInfo?.searchId)
+                        .set("xi_city_id", cityInfo?.cityId)
+                        .set("xi_city_nm", cityInfo?.cityName)
+                        .set("xi_type_of_accommodation", productInfo?.typeOfAccommodation)
+                        .set("xi_room_type", productInfo?.roomType)
+                        .set("xi_bedrooms", productInfo?.numOfBedRooms)
+                        .set("xi_bathrooms", productInfo?.numOfBethrooms)
+                        .set("xi_families", productInfo?.families)
+                        .set("xi_kitchen_facillities", productInfo?.kitchenFacillities)
+                        .set("xi_entertainment", productInfo?.entertainment)
+                        .set("xi_room_facillities", productInfo?.roomFacillities)
+                        .set("xi_facilities", productInfo?.facilities)
+                        .set("xi_special_facilities", productInfo?.specialFacilities)
+                        .set("xi_booking_type", productInfo?.bookingType)
+                        .set("xi_cancel_policy", productInfo?.cancelPolicy)
+                        .set("xi_discount_id", productInfo?.discountId)
+                        .set("xi_discount_nm", productInfo?.discountName)
+                        .set("xi_discount_percent", productInfo?.discountPercent)
+                        .set("xi_roomrate_weekdays", productInfo?.roomrate_weekdays)
+                        .set("xi_roomrate_weekend", productInfo?.roomrate_weekend)
+                        .set("xi_number_of_review", productInfo?.numbOfReview)
+                        .set("xi_review_rate", productInfo?.reviewRate)
+                        .build()
+                )
+                .build()
+        )
+        /******************************/
+    }
+
     override fun onClick(v: View) {
         when (v.id) {
             R.id.checkinSelectionButton -> {
@@ -74,6 +123,12 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun genRequestToBookInfo(numOfGuest: Int, roomNight: Long): RequestToBook {
+        val rentFee = calcRentFee(productInfo?.unitFee ?: 0.0, roomNight)
+        val totalFee = calcTotalFee(
+            rentFee,
+            productInfo?.cleaningFee ?: 0.0,
+            productInfo?.otherServiceFee ?: 0.0)
+
         return RequestToBook(
             roomNight = roomNight,
             bookingId = "SAMPLEIDA",
@@ -82,8 +137,19 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
             dateCheckout = convertStringToDate(checkoutTextView.text.toString()),
             numOfGuest = numOfGuest,
             discountApply = false.toString(),
+            rentalFee = rentFee,
+            totalFee = totalFee,
             actionRequestToBook = "Click"
         )
+    }
+
+
+    private fun calcRentFee(unitFee: Double, roomNight: Long): Double {
+        return if (unitFee <= 0 || roomNight <= 0) 0.0 else unitFee * roomNight
+    }
+
+    private fun calcTotalFee(rentFee: Double, cleaningFee: Double, otherFee: Double): Double {
+        return rentFee + cleaningFee + otherFee
     }
 
     private fun toRequestToBookActivity(reqToBookInfo: RequestToBook) {

@@ -11,6 +11,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/dop-android-base-sdk" />
+            <option value="$PROJECT_DIR$/dop-android-sdk" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

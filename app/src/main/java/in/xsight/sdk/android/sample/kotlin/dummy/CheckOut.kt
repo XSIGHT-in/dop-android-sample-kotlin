@@ -6,8 +6,6 @@ import java.util.*
 
 @Parcelize
 data class CheckOut(
-    var rentFee: Double,
-    var totalFee: Double,
     var orderNumber: String,  // ordNo: same as xi_booking_id
     var curcy: String,    // curcy: USD, VND, KRW, etc.
     var timezone: String,     // xi_timezone: Country phone code. ex) 84

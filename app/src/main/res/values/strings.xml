@@ -13,4 +13,14 @@
     <string name="request_to_book">Request To Book</string>
     <string name="purchase">Purchase</string>
     <string name="back_to_main">Back To Main</string>
+
+    <string-array name="dotAuthorizationKey">
+        <item name="useMode">3</item>
+        <item name="domain">https://api.xsight.in/</item> // DOT END POINT
+        <item name="serviceNumber">300</item>
+        <item name="isDebug">false</item>
+        <item name="accessToken">1525fe0c-4719-11ea-bedb-0242ac10ee0b</item> // Luxstay accessToken
+        <item name="domain_x">https://api.xsight.in/</item> // DOX END POINT
+        <item name="isShowDebugLog">true</item>
+    </string-array>
 </resources>

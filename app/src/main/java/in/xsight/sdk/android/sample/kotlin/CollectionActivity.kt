@@ -6,6 +6,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.gruter.sdk.open.api.DOX
+import com.gruter.sdk.open.model.XEvent
+import com.gruter.sdk.open.model.XProperties
 import kotlinx.android.synthetic.main.activity_collection.*
 
 class CollectionActivity : AppCompatActivity(), View.OnClickListener  {
@@ -27,6 +30,31 @@ class CollectionActivity : AppCompatActivity(), View.OnClickListener  {
         productImageView2.setOnClickListener(this)
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        /******************************
+         * XSIGHT.in SDK
+         */
+        DOX.setEventGroupName("View_Collection")
+        DOX.logEvent(
+            XEvent.Builder()
+                .setEventName("View_Collection")
+                .setProperties(
+                    XProperties.Builder()
+                        .set("xi_is_host", "Guest")
+                        .set("xi_city_id", cityInfo?.cityId)
+                        .set("xi_city_nm", cityInfo?.cityName)
+                        .set("xi_collection_id", cityInfo?.collectionId)
+                        .set("xi_collection_nm", cityInfo?.collectionName)
+                        .set("xi_theme_id", cityInfo?.themeId)
+                        .set("xi_theme_nm", cityInfo?.themeName)
+                        .build()
+                )
+                .build()
+        )
+        /******************************/
+    }
 
     override fun onClick(v: View) {
         when (v.id) {

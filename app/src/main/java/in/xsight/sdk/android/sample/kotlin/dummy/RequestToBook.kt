@@ -13,5 +13,7 @@ data class RequestToBook(
     var dateCheckout: Date,   // xi_date_checkout
     var numOfGuest: Int,         // xi_number_of_guest
     var discountApply: String,    // xi_discount_apply: True or False
+    var rentalFee: Double,      // xi_rental_fee
+    var totalFee: Double,   // xi_total_fee
     var actionRequestToBook: String // xi_request_to_book: Click | NA
 ) : Parcelable
