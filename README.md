@@ -12,7 +12,7 @@
 
 ### Dependencies: 'app/build.gradle'
 
-> See [/app/build.gradle](blob/master/app/build.gradle#L51)
+> See [/app/build.gradle](app/build.gradle#L51)
 
 ```groovy
 dependencies {
@@ -46,7 +46,7 @@ dependencies {
 
 ### Config 'app/build.gradle'
 
-> See [/app/build.gradle](https://github.com/XSIGHT-in/dop-android-sample-kotlin/blob/master/app/build.gradle#L24)
+> See [/app/build.gradle](app/build.gradle#L24)
 
 ```groovy
 android {
@@ -64,7 +64,7 @@ android {
 
 ### Config xml value: 'app/res/values/strings.xml'
 
-> See [/app/src/main/res/values/strings.xml](https://github.com/XSIGHT-in/dop-android-sample-kotlin/blob/master/app/src/main/res/values/strings.xml#L17)
+> See [/app/src/main/res/values/strings.xml](app/src/main/res/values/strings.xml#L17)
 
 ```xml
 <resources>
@@ -82,7 +82,7 @@ android {
 ```
 
 ### Enable network connection (android > 9)
-AndroidManifest.xml
+> See [/app/src/main/AndroidManifest.xml](app/src/main/AndroidManifest.xml#L11)
 ```xml
 <!-- AndroidManifest.xml -->
 ...
@@ -94,8 +94,7 @@ AndroidManifest.xml
 ```
 android:networkSecurityConfig="@xml/network_security_config"
 
-> See [/app/src/main/res/xml/network_security_config.xml](https://github.com/XSIGHT-in/dop-android-sample-kotlin/blob/master/app/src/main/res/values/strings.xml#L17)
-
+> See [/app/src/main/res/xml/network_security_config.xml](app/src/main/res/values/strings.xml#L17)
 
 ```xml
 <!-- app/res/xml/network_security_config.xml -->
@@ -114,6 +113,8 @@ android:networkSecurityConfig="@xml/network_security_config"
 
 ### SDK Init
 Apply the code for initializing the SDK to the onCreate(Bundle savedInstanceState)
+
+> If you want to make clear about the details of each event property, see [MainActivity.kt](app/src/main/java/in/xsight/sdk/android/sample/kotlin/MainActivity.kt#L27) in sample project.
 
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -150,6 +151,9 @@ DOX.userIdentify(
 ```
 ### Sign-In
 The userIdentify() function is invoked when user information is created, deleted, or changed, however, in this site, is also called from Sign_In to collect information from users who have previously subscribed.
+
+> If you want to make clear about the details of each event property, see [MainActivity.kt](app/src/main/java/in/xsight/sdk/android/sample/kotlin/MainActivity.kt#L74) in sample project.
+
 
 ```kotlin
 DOX.setUserId(this.user.userId)
@@ -191,6 +195,8 @@ DOX.logEvent(
 
 ### Visit_Main_Page
 
+> If you want to make clear about the details of each event property, see [MainActivity.kt](app/src/main/java/in/xsight/sdk/android/sample/kotlin/MainActivity.kt#L51) in sample project.
+
 ```kotlin
 DOX.setEventGroupName("Visit_Main_Page")
 DOX.logEvent(
@@ -205,7 +211,34 @@ DOX.logEvent(
 )
 ```
 
+### View_Collection
+
+> If you want to make clear about the details of each event property, see [CollectionActivity.kt](app/src/main/java/in/xsight/sdk/android/sample/kotlin/CollectionActivity.kt#L43) in sample project.
+
+```kotlin
+DOX.setEventGroupName("View_Collection")
+DOX.logEvent(
+    XEvent.Builder()
+        .setEventName("View_Collection")
+        .setProperties(
+            XProperties.Builder()
+                .set("xi_is_host", /* String */)    // "Guest" or "Host"
+                .set("xi_city_id", /* Int */)
+                .set("xi_city_nm", /* String */)
+                .set("xi_collection_id", /* Int */)
+                .set("xi_collection_nm", /* String */)
+                .set("xi_theme_id", /* Int */)
+                .set("xi_theme_nm", /* String */)
+                .build()
+        )
+    .build()
+)
+```
+
+
 ### View_PDP
+
+> If you want to make clear about the details of each event property, see [ProductActivity.kt](app/src/main/java/in/xsight/sdk/android/sample/kotlin/ProductActivity.kt#L61) and [Product.kt](app/src/main/java/in/xsight/sdk/android/sample/kotlin/dummy/Product.kt) in sample project.
 
 ```kotlin
 DOX.setEventGroupName("View_PDP")
@@ -246,6 +279,8 @@ DOX.logEvent(
 ```
 
 ### Click_Request_to_Book
+
+> If you want to make clear about the details of each event property, see [RequestToBookActivity.kt](app/src/main/java/in/xsight/sdk/android/sample/kotlin/RequestToBookActivity.kt#L64) and [RequestToBook.kt](app/src/main/java/in/xsight/sdk/android/sample/kotlin/dummy/RequestToBook.kt) in sample project.
 
 ```kotlin
 DOX.setEventGroupName("Click_Request_to_Book")
@@ -298,6 +333,8 @@ DOX.logEvent(
 ```
 
 ### Check_Out
+
+> If you want to make clear about the details of each event property, see [PurchaseCompleteActivity.kt](app/src/main/java/in/xsight/sdk/android/sample/kotlin/PurchaseCompleteActivity.kt#L56) and [CheckOut.kt](app/src/main/java/in/xsight/sdk/android/sample/kotlin/dummy/CheckOut.kt) in sample project.
 
 ```kotlin
 DOX.setEventGroupName("Check_Out")
