@@ -27,12 +27,13 @@ class CollectionActivity : AppCompatActivity(), View.OnClickListener  {
         // Set collection name as title
         setTitle(cityInfo?.cityName ?: "ERROR")
 
+//        DOX.initialization(this)
         productImageView1.setOnClickListener(this)
         productImageView2.setOnClickListener(this)
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
 
         /******************************
          * XSIGHT.in SDK

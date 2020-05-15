@@ -14,6 +14,7 @@ import com.gruter.sdk.open.model.XProperties
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -73,6 +74,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                      * XSIGHT.in SDK
                      */
                     DOX.setUserId("XS19H71n123")
+
+                    Log.d("XSIGHT.in", "Start for Sign_In userIdentify()")
+                    DOX.setEventGroupName("Sign_In")
+                    DOX.userIdentify(
+                        XIdentify.Builder()
+                            .setOnce("user_id", "XS19H71n123")
+                            .set("xi_email", "test@mail.com")
+                            .set("xi_gender", "F")
+                            .set("xi_timezone", "84")
+                            .set("xi_email", "test@mail.com")
+                            .set("xi_fb_id", "test@mail.com")
+                            .set("xi_google_id", "test@mail.com")
+                            .set("xi_status", "Active")
+                            .set("xi_is_host", "Guest")
+                            .build()
+                    )
+
                     Log.d("XSIGHT.in", "Start for Sign_In logEvent()")
                     DOX.setEventGroupName("Sign_In")
                     DOX.logEvent(
@@ -90,21 +108,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                     .set("xi_is_host", "Guest")
                                     .build()
                             )
-                            .build()
-                    )
-                    Log.d("XSIGHT.in", "Start for Sign_In userIdentify()")
-                    DOX.setEventGroupName("Sign_In")
-                    DOX.userIdentify(
-                        XIdentify.Builder()
-                            .setOnce("user_id", "XS19H71n123")
-                            .set("xi_email", "test@mail.com")
-                            .set("xi_gender", "F")
-                            .set("xi_timezone", "84")
-                            .set("xi_email", "test@mail.com")
-                            .set("xi_fb_id", "test@mail.com")
-                            .set("xi_google_id", "test@mail.com")
-                            .set("xi_status", "Active")
-                            .set("xi_is_host", "Guest")
                             .build()
                     )
                     /******************************/

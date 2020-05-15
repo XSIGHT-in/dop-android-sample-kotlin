@@ -21,6 +21,6 @@
         <item name="isDebug">false</item>
         <item name="accessToken">1525fe0c-4719-11ea-bedb-0242ac10ee0b</item> // Luxstay accessToken
         <item name="domain_x">https://api.xsight.in/</item> // DOX END POINT
-        <item name="isShowDebugLog">true</item>
+        <item name="isShowDebugLog">false</item>
     </string-array>
 </resources>
