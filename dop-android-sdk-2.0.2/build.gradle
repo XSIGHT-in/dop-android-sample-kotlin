@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('dop-android-sdk-2.0.2.aar'))

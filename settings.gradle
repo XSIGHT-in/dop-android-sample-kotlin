@@ -1,2 +1,2 @@
 rootProject.name='Kotlin Sample'
-include ':app'
+include ':app', ':dop-android-sdk-2.0.2'
