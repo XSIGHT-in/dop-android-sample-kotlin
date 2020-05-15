@@ -5,12 +5,14 @@
 ### Download SDK v2.0
 **ATTENTION: From version 2.0, use "android-sdk-2.x.x.aar" only.**
 
-1. Download SDK v2.0.2 file via [this link](./readme.blob/dop-android-sdk-2.0.2/dop-android-sdk-2.0.2.aar).
+1. Download SDK v2.0.2 file via [this link](dop-android-sdk-2.0.2/dop-android-sdk-2.0.2.aar).
 2. Using Android Studio -> File -> New Module -> Import .JAR/ .AAR Package
 ![description](./readme.blob/installation.png)
 3. Import Module dop-android-sdk-2.0.2.aar you get above.
 
 ### Dependencies: 'app/build.gradle'
+
+> See [/app/build.gradle](blob/master/app/build.gradle#L51)
 
 ```groovy
 dependencies {
@@ -43,6 +45,9 @@ dependencies {
 ```
 
 ### Config 'app/build.gradle'
+
+> See [/app/build.gradle](https://github.com/XSIGHT-in/dop-android-sample-kotlin/blob/master/app/build.gradle#L24)
+
 ```groovy
 android {
     ...
@@ -58,6 +63,9 @@ android {
 ```
 
 ### Config xml value: 'app/res/values/strings.xml'
+
+> See [/app/src/main/res/values/strings.xml](https://github.com/XSIGHT-in/dop-android-sample-kotlin/blob/master/app/src/main/res/values/strings.xml#L17)
+
 ```xml
 <resources>
     ...
@@ -85,6 +93,10 @@ AndroidManifest.xml
         android:theme="@style/AppTheme">
 ```
 android:networkSecurityConfig="@xml/network_security_config"
+
+> See [/app/src/main/res/xml/network_security_config.xml](https://github.com/XSIGHT-in/dop-android-sample-kotlin/blob/master/app/src/main/res/values/strings.xml#L17)
+
+
 ```xml
 <!-- app/res/xml/network_security_config.xml -->
 <?xml version="1.0" encoding="utf-8"?>
